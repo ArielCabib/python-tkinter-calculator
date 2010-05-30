@@ -1,0 +1,68 @@
+<?xml version="1.0"?>
+<!--
+#       help.xml
+#       
+#       Copyright 2010 Ariel Haviv <ariel.haviv@gmail.com>
+#       
+#       Redistribution and use in source and binary forms, with or without
+#       modification, are permitted provided that the following conditions are
+#       met:
+#       
+#       * Redistributions of source code must retain the above copyright
+#         notice, this list of conditions and the following disclaimer.
+#       * Redistributions in binary form must reproduce the above
+#         copyright notice, this list of conditions and the following disclaimer
+#         in the documentation and/or other materials provided with the
+#         distribution.
+#       * Neither the name of the  nor the names of its
+#         contributors may be used to endorse or promote products derived from
+#         this software without specific prior written permission.
+#       
+#       THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
+#       "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
+#       LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR
+#       A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT
+#       OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL,
+#       SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT
+#       LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE,
+#       DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY
+#       THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
+#       (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
+#       OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+-->
+
+<help title="Main Help">
+Wellcome to Python Calculator.
+
+Navigate through this help using the buttons above, or by clicking the desired subject to the left.
+	<subject title="Introduction">
+This calculator is ready to start using. Just type any calculation you desire (like 5+8*4.5-2) and hit Enter to get the result.
+
+You can use your keyboard, numpad, or just by clicking the buttons. The are a few advanced options in this calculator, but you don't need to know them to start calculating simple things.
+
+Good luck!
+	</subject>
+	<subject title="Basic Usage">
+In this section we will describe some ONLY BASIC functionalities of this calculator.
+		<subject title="Menus">
+Through the menu (located at the top) you can access all functions of the calculator. Simple &amp; advanced. You will notice that there are some menu options that have a kewboard shortcut (Like Ctrl+X to switch to hexadecimal mode). Some doesn't (Like the 'About...' screen) because I didn't think it's useful.
+
+Feel free to browse the menu and try some by yourself.
+		</subject>
+		<subject title="Calculations Field">
+In this field you will enter your calculations. You can use your keyboard, or the mouse (by clicking the keypads on the screen).
+
+This field is smart. It won't let you enter illegal digits (we will discuss it later), and it cannot be blank (only Zero). But it's not too smart, if you enter some funny operation like 3+*2, you will not be able to get a result. When it's angry at you, it blinks red for about a second :)
+
+For general info - we are using mainly the python interpreter (with some inhancements).
+		</subject>
+		<subject title="Numpad">
+At the left bottom, you can see the numpad. This represents the available digits in this mode. By default, you will be working in decimal mode (base 10), which simply means the numbers you are used to (if you are a normal human being and not some geek programmer). You can use all digits (from 0 to 9) and the Dot (.) The Equal sign is also there, even though it is an operator and not a digit, just because of the convension.
+
+This pad is dynamic, by the base you are working in. Details are in the advanced section of this help.
+		</subject>
+		<subject title="Operators">
+As for this version, the operator keypad is static. It doesn't ever change. There will be all the basic operators available to you. Addition (+), Substraction (-), Multiply (*) and Division (/). You can use also the Braces '(' or ')' if you need them. Just be careful to put an operator before! For example: 5(9+6) is illegal, maybe you mean 5*(9+6)? which is legal.
+		</subject>
+	</subject>
+</help>
