@@ -8,7 +8,7 @@ def node(val, left=None, right=None):
   val is either an operator (e.g. '+') or a repr(int) (e.g. '5')
   in case when val is operator, left and right must be nodes themselves.'''
   
-  if re.match(r'\w+$', val):
+  if re.match(r'[\w.]+$', val):
     #this is a number (of any base)
     return {'val': val}
   else:
@@ -33,7 +33,7 @@ def nota(d, fix, prec=None):
   when fix is 'in', prec must be a number of precedence of the calling node.
   prec is used only used for recursive needs. always use prec=0 unless you have a good reason no to.'''
 
-  if re.match(r'\w+$', d['val']):
+  if re.match(r'[\w.]+$', d['val']):
     #this is an expression
     return d['val']
   else:
@@ -131,7 +131,7 @@ def make_ast_from_list(l):
 
 if __name__ == '__main__':
   p = make_list_from_str('-((3^2-4)+2A)')
-  p = make_list_from_str('A2+8')
+  p = make_list_from_str('A2+5.')
   print p
   d = make_ast_from_list(p)
   print d
