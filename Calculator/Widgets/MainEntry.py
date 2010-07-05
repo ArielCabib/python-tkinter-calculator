@@ -48,7 +48,8 @@ class MainEntry(Entry):
 		self.prev_lbl = prev_lbl
 		self.history = history
 		self.error_semaphore = 0
-		self.insert(0, '0')
+		self.replace_with('0')
+		#self.insert(0, '0')
 
 	def load_history(self, file_):
 		self.history.load_file(file_)
@@ -93,7 +94,8 @@ class MainEntry(Entry):
 	def check_empty(self):
 		#don't let the entry be blank
 		if self.get() is '':
-			self.insert(0, '0')
+			self.replace_with('0')
+			#self.insert(0, '0')
 
 	def new_value(self, to_display, to_save, parser, to):
 		#saving values to history from list 'to_save' and displaying new value

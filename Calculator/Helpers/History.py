@@ -38,6 +38,8 @@ Calculator by Ariel Haviv (ariel.haviv@gmail.com)
 instructor: Peymer Anatoly
 """
 
+import notation as nota
+
 class History():
 	def __init__(self):
 		#all numbers will be saved allways at base 10
@@ -75,6 +77,11 @@ class History():
 			raise Exception ("Not a file chosen")
 
 	def append(self, text):
+		#converting to ast and back to infix text, to arrange and cancel spare brackets:
+		lst = nota.make_list_from_str(text)
+		ast = nota.make_ast_from_list(lst)
+		text = nota.nota(ast, 'in', 0)
+		
 		#adding entry to history
 		history = self.history
 

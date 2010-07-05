@@ -45,10 +45,11 @@ def nota(d, fix, prec=None):
     elif fix == 'in':
       #infix
       p = precedence(d['val'])
-      b = prec >= p and ('(',')') or ('','') #if previous precedence is bigger, insert brackets
+      b = prec > p and ('(',')') or ('','') #if previous precedence is bigger, insert brackets
       #removing explicit negative zero '0-4' ==> '-4' :  
-      t = b[0] + re.sub(r'^0-', '-', nota(d['left'], fix, p) + d['val'] + nota(d['right'], fix, p)) + b[1]
-      return t
+      t = re.sub(r'^0-', '-', nota(d['left'], fix, p) + d['val'] + nota(d['right'], fix, p))
+      t = re.sub(r'^--', '', t)  #removing double negation 
+      return b[0] + t + b[1]
 
 def precedence(op):
   '''  return op's precedence number:
@@ -125,7 +126,8 @@ def make_ast_from_list(l):
   return n[0]
 
 if __name__ == '__main__':
-  p = make_list_from_str('-((6*7-4)+2)')
+  p = make_list_from_str('-((3^2-4)+2)')
+  p = make_list_from_str('0')
   print p
   d = make_ast_from_list(p)
   print d
