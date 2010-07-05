@@ -90,7 +90,7 @@ class InputHandler():
 				self.helper.toggle_prev_lbl()
 			elif cmd[1] == 'Show_History':
 				self.root.ShowHistory(self.root, self.helper)
-		elif cmd[0] == 'NumPad':
+		elif cmd[0] == 'Base':
 			if cmd[1] == 'Binary':
 				self.helper.convert_and_refresh(2)
 			elif cmd[1] == 'Octal':
