@@ -40,10 +40,12 @@ instructor: Peymer Anatoly
 
 from Tkinter import *
 import radix
+import notation
 
 class Parser():
 	def __init__(self, cnfg):
 		self.cnfg = cnfg
+		self.nota = notation
 
 	def convert(self, text, from_, to):
 		#convert from base to base
