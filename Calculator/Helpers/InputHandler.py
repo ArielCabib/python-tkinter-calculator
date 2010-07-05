@@ -65,11 +65,13 @@ class InputHandler():
 		
 	def key_pressed(self, event):
 		self.handle_input(event.char, 'key')
+		self.helper.refresh_fixes()
 		
 	def btn_clicked(self, event):
 		key = event.widget['text']
 		if key == 'X': key = '*'
 		self.handle_input(key, 'btn')
+		self.helper.refresh_fixes()
 
 	def mnu_clicked(self, cmd):
 		#menu entry clicked
@@ -91,7 +93,7 @@ class InputHandler():
 			elif cmd[1] == 'Show_History':
 				self.root.ShowHistory(self.root, self.helper)
 			elif cmd[1] == 'Toggle_Fixes':
-				pass #toggle prefix&postfix
+				self.root.fixes.toggle_visible()
 		elif cmd[0] == 'Base':
 			if cmd[1] == 'Binary':
 				self.helper.convert_and_refresh(2)
@@ -163,7 +165,8 @@ class InputHandler():
 				self.entry.check_empty()
 		
 		elif key in ['+/-', '`']:  # ` is good also
-			self.helper.parse_and_replace('-(' + self.entry.get() + ')')
+		  self.helper.parse_and_replace(self.entry.get())
+		  self.helper.parse_and_replace('-(' + self.entry.get() + ')')
 
 		elif key in self.shortcuts.keys():  #checking shortcut (Ctrl+?)
 			if self.shortcuts[key]['args']:

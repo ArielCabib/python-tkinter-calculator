@@ -118,3 +118,6 @@ class InputHelperFunctions():
 				self.root.help_widget.deiconify()
 			else:
 				self.root.help_widget = self.root.Help(self.root)
+
+	def refresh_fixes(self):
+		self.root.fixes.update(self.entry.get())

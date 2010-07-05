@@ -97,6 +97,7 @@ class Calculator(Frame):
 	def build_widgets(self):
 		self.prev_lbl = Widgets.PrevLabel(self)
 		self.entry = Widgets.MainEntry(self, self.history, self.prev_lbl)
+		self.fixes = Widgets.FixesWidget(self)
 		self.in_hndl = Helpers.InputHandler(self, self.entry, self.cnfg, self.parser)
 		self.menu = Widgets.MainMenu(self, self.in_hndl)
 		self.num_pad = Widgets.KeyPad(self, btn_dict=self.cnfg.numpad_keys, width=3)
@@ -106,5 +107,7 @@ class Calculator(Frame):
 		self.menu.grid(row=0, sticky=W, columnspan=2)
 		self.prev_lbl.grid(row=1, columnspan=2, sticky=W)
 		self.entry.grid(row=2, columnspan=2, sticky=W+E)
-		self.num_pad.grid(row=3, column=0, padx=10)
-		self.action_pad.grid(row=3, column=1, padx=10, sticky=N)
+		self.fixes.grid(row=3, columnspan=2, sticky=W+E)
+		self.fixes.toggle_visible()
+		self.num_pad.grid(row=4, column=0, padx=10)
+		self.action_pad.grid(row=4, column=1, padx=10, sticky=N)

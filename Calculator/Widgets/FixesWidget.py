@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 #
-#       __init__.py
+#       FixesWidget.py
 #       
 #       Copyright 2010 Ariel Haviv <ariel.haviv@gmail.com>
 #       
@@ -32,17 +32,61 @@
 #       OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 """
-***Widget initialization file***
+***The widget that contains prefix & postfix Text widgets***
 
 Calculator by Ariel Haviv (ariel.haviv@gmail.com)
 instructor: Peymer Anatoly
 """
 
-from MainMenu import *
-from MainEntry import *
-from KeyPad import *
-from PrevLabel import *
-from About import *
-from ShowHistory import *
-from Help import *
-from FixesWidget import *
+from Tkinter import *
+
+class FixesWidget(Frame):
+	def __init__(self, root, visible = True):
+		Frame.__init__(self, root)
+		self.root = root
+		self.nota = root.parser.nota
+		self.visible = visible  #initiating with true, because first call to 'toggle_visible' will make if false.
+		self.create_widgets()
+		self.draw_widgets()
+		self.update('0')
+
+	def create_widgets(self):
+		self.pre = Text(self, height=1, width=10, state=DISABLED)
+		self.post = Text(self, height=1, width=10, state=DISABLED)
+
+	def draw_widgets(self):
+		Label(self, text='prefix: ').grid(row=0, column=0, sticky=W)
+		Label(self, text='postfix: ').grid(row=1, column=0, sticky=W)
+		self.pre.grid(row=0, column=1, sticky=E)
+		self.post.grid(row=1, column=1, sticky=E)
+
+	def update(self, content):
+		#updating texts with new value
+		nota = self.nota
+		try:
+		  d = nota.make_ast_from_list(nota.make_list_from_str(content))
+		  pre = self.nota.nota(d, 'pre')
+		  post = self.nota.nota(d, 'post')
+		except:
+			pre = post = 'Expression incomplete.'
+		finally:
+		  self.update_text(self.pre, pre)
+		  self.update_text(self.post, post)
+
+	def update_text(self, widget, text):
+		ln = len(text) > 10 and len(text) or 10  #minimum length of 10
+		widget.config(state=NORMAL, width=ln)
+		widget.delete(0.0, END)
+		widget.insert(0.0, text)
+		widget.config(state=DISABLED)
+
+	def toggle_visible(self):
+		#toggle visibility on<=>off
+		self.visible = not self.visible
+		if self.visible:
+			self.grid()
+		else:
+			self.grid_remove()
+
+if __name__ == '__main__':
+	pass

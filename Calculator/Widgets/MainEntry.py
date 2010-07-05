@@ -70,11 +70,11 @@ class MainEntry(Entry):
 		try:
 			text = func()
 			try:
-				text = parser.convert(text, 10, to)
+			  text = parser.convert(text, 10, to)
+			  self.update_prev_lbl(parser, to)
+			  self.replace_with(text)
 			except:
-				self.error()
-			self.update_prev_lbl(parser, to)
-			self.replace_with(text)			
+				self.error()			
 		except:
 			self.error()
 						

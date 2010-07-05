@@ -8,9 +8,11 @@ def node(val, left=None, right=None):
   val is either an operator (e.g. '+') or a repr(int) (e.g. '5')
   in case when val is operator, left and right must be nodes themselves.'''
   
-  try:
-    return {'val': str(eval(val))}
-  except:
+  if re.match(r'\w+$', val):
+    #this is a number (of any base)
+    return {'val': val}
+  else:
+    #this is an expression
     return {'val': val, 'left': left.copy(), 'right': right.copy()}
 
 def visit(d):
@@ -30,10 +32,12 @@ def nota(d, fix, prec=None):
   d is the node. fix can be one of: ['in', 'pre', 'post']
   when fix is 'in', prec must be a number of precedence of the calling node.
   prec is used only used for recursive needs. always use prec=0 unless you have a good reason no to.'''
-  try:
-    t = str(eval(d['val']))
-    return t
-  except:
+
+  if re.match(r'\w+$', d['val']):
+    #this is an expression
+    return d['val']
+  else:
+    #this is an operand
     if fix == 'pre':
       #prefix
       t = '%s %s %s' % (d['val'], nota(d['left'], fix), nota(d['right'], fix))
@@ -126,12 +130,12 @@ def make_ast_from_list(l):
   return n[0]
 
 if __name__ == '__main__':
-  p = make_list_from_str('-((3^2-4)+2)')
-  p = make_list_from_str('0')
+  p = make_list_from_str('-((3^2-4)+2A)')
+  p = make_list_from_str('A2+8')
   print p
   d = make_ast_from_list(p)
   print d
-  print visit(d)
-  print nota(d, 'in', 0)
+  #print visit(d)
+  #print nota(d, 'in', 0)
   print nota(d, 'pre')
   print nota(d, 'post')
