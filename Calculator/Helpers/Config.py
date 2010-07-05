@@ -47,10 +47,10 @@ class Config():
 		
 		self.root = root
 		self.prev_lbl = prev_lbl
-		self.action_keys = ['Bksp', 'Clr', '+/-', '+', '-', 'X', '/', '^', '(', ')']
+		self.action_keys = ['Bksp', 'Clr', '+/-', '+', '-', 'X', '/', '^', '%', '(', ')']
 		self.dot_key = ['.']
 		self.base_keys = list(string.digits + string.letters[26:])
-		self.legal_operators = ['-', '+', '/', '*', '^', '(', ')']
+		self.legal_operators = ['-', '+', '/', '*', '^', '%', '(', ')']
 		
 		self.set_base(base)
 		

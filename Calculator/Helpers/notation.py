@@ -49,11 +49,28 @@ def nota(d, fix, prec=None):
     elif fix == 'in':
       #infix
       p = precedence(d['val'])
-      b = prec > p and ('(',')') or ('','') #if previous precedence is bigger, insert brackets
-      #removing explicit negative zero '0-4' ==> '-4' :  
-      t = re.sub(r'^0-', '-', nota(d['left'], fix, p) + d['val'] + nota(d['right'], fix, p))
-      t = re.sub(r'^--', '', t)  #removing double negation 
-      return b[0] + t + b[1]
+      b = prec >= p and ('(',')') or ('','') #if previous precedence is bigger, insert brackets
+      left = nota(d['left'], fix, p)
+      right = nota(d['right'], fix, p)
+      val = d['val']
+      e = eval(left + val + right)
+      ev = []
+      ev.append(left[1:-1] + val + right[1:-1])
+      ev.append(left + val + right[1:-1])
+      ev.append(left[1:-1] + val + right)
+      ev.append(left + val + right)
+
+      for i in ev:
+        try:
+          if eval(i) == e:
+            #trying to give up some brackets
+            t = i
+            #removing explicit negative zero '0-4' ==> '-4' :
+            t = re.sub(r'^0-', '-', t)
+            t = re.sub(r'^--', '', t)  #removing double negation
+            return b[0] + t + b[1]
+        except:
+          continue
 
 def precedence(op):
   '''  return op's precedence number:
@@ -131,11 +148,11 @@ def make_ast_from_list(l):
 
 if __name__ == '__main__':
   p = make_list_from_str('-((3^2-4)+2A)')
-  p = make_list_from_str('A2+5.')
+  p = make_list_from_str('3-3-4')
   print p
   d = make_ast_from_list(p)
   print d
-  #print visit(d)
-  #print nota(d, 'in', 0)
+  print visit(d)
+  print nota(d, 'in', 0)
   print nota(d, 'pre')
   print nota(d, 'post')
