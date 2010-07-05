@@ -41,6 +41,7 @@ instructor: Peymer Anatoly
 from Tkinter import *
 import radix
 import notation
+import re
 
 class Parser():
 	def __init__(self, cnfg):
@@ -70,6 +71,8 @@ class Parser():
 		legal_sep = cnfg.legal_operators
 		base = cnfg.base
 
+		text = re.sub(r'\^', '**', text)  #converting all powers from ^ to **
+		#print text
 		if base != 10:
 			if '.' in text:
 				raise Exception
