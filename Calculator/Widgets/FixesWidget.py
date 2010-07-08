@@ -48,6 +48,7 @@ class FixesWidget(Frame):
 		self.visible = visible  #initiating with true, because first call to 'toggle_visible' will make if false.
 		self.create_widgets()
 		self.draw_widgets()
+		self.bind_widgets()
 		self.update('0')
 
 	def create_widgets(self):
@@ -59,6 +60,10 @@ class FixesWidget(Frame):
 		Label(self, text='postfix: ').grid(row=1, column=0, sticky=W)
 		self.pre.grid(row=0, column=1, sticky=E)
 		self.post.grid(row=1, column=1, sticky=E)
+
+	def bind_widgets(self):
+		self.pre.bind('<Enter>', lambda x: x.widget.tag_add(SEL, 1.0, END))
+		self.post.bind('<Enter>', lambda x: x.widget.tag_add(SEL, 1.0, END))
 
 	def update(self, content):
 		#updating texts with new value
