@@ -35,8 +35,9 @@
 ***Function called by InputHandler***
 
 Calculator by Ariel Haviv (ariel.haviv@gmail.com)
-instructor: Peymer Anatoly
+Instructors: Anatoly Peymer, Zehava Lavi
 """
+
 import tkSimpleDialog
 import tkFileDialog
 

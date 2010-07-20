@@ -36,7 +36,7 @@
 and calls helper functions to do actions***
 
 Calculator by Ariel Haviv (ariel.haviv@gmail.com)
-instructor: Peymer Anatoly
+Instructors: Anatoly Peymer, Zehava Lavi
 """
 
 from InputHelperFunctions import InputHelperFunctions

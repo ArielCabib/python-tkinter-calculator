@@ -35,7 +35,7 @@
 ***A class to parse input and change bases***
 
 Calculator by Ariel Haviv (ariel.haviv@gmail.com)
-instructor: Peymer Anatoly
+Instructors: Anatoly Peymer, Zehava Lavi
 """
 
 from Tkinter import *

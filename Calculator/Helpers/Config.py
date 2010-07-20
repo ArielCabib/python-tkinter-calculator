@@ -35,7 +35,7 @@
 ***Configuration class***
 
 Calculator by Ariel Haviv (ariel.haviv@gmail.com)
-instructor: Peymer Anatoly
+Instructors: Anatoly Peymer, Zehava Lavi
 """
 
 from Tkinter import *

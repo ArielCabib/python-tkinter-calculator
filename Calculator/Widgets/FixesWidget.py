@@ -35,7 +35,7 @@
 ***The widget that contains prefix & postfix Text widgets***
 
 Calculator by Ariel Haviv (ariel.haviv@gmail.com)
-instructor: Peymer Anatoly
+Instructors: Anatoly Peymer, Zehava Lavi
 """
 
 from Tkinter import *

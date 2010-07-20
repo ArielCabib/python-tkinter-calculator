@@ -35,7 +35,7 @@
 ***Class to handle history records***
 
 Calculator by Ariel Haviv (ariel.haviv@gmail.com)
-instructor: Peymer Anatoly
+Instructors: Anatoly Peymer, Zehava Lavi
 """
 
 import notation as nota
