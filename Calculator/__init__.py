@@ -50,12 +50,7 @@ def init(root):
 class Calculator(Frame):
 	def __init__(self, root):
 		Frame.__init__(self, root)
-		
-		try:
-			#maybe root is a Toplevel. if yes, try to set its title.
-			root.title('Calculator')
-		except:
-			pass
+		self.root = root		
 
 		#calling init functions:
 		self.config_init()
@@ -63,6 +58,13 @@ class Calculator(Frame):
 		self.draw_widgets()
 		self.set_bindings()
 		self.grid()
+
+	def set_title(self, base):
+		try:
+			#maybe root is a Toplevel. if yes, try to set its title.
+			self.root.title('Calculator - Base %d' % base)
+		except:
+			pass		
 		
 	def config_init(self):
 		#building helper functions:

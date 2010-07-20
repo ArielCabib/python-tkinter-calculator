@@ -119,5 +119,6 @@ class InputHelperFunctions():
 			else:
 				self.root.help_widget = self.root.Help(self.root)
 
-	def refresh_fixes(self):
+	def refresh_entries(self):
+		self.entry.update_len()
 		self.root.fixes.update(self.entry.get())

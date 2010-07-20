@@ -52,8 +52,8 @@ class FixesWidget(Frame):
 		self.update('0')
 
 	def create_widgets(self):
-		self.pre = Text(self, height=1, width=10, state=DISABLED)
-		self.post = Text(self, height=1, width=10, state=DISABLED)
+		self.pre = Text(self, height=1, width=10, state=DISABLED, font=('arial',10))
+		self.post = Text(self, height=1, width=10, state=DISABLED, font=('arial',10))
 
 	def draw_widgets(self):
 		Label(self, text='prefix: ').grid(row=0, column=0, sticky=W)

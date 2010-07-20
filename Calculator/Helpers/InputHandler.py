@@ -65,13 +65,13 @@ class InputHandler():
 		
 	def key_pressed(self, event):
 		self.handle_input(event.char, 'key')
-		self.helper.refresh_fixes()
+		self.helper.refresh_entries()
 		
 	def btn_clicked(self, event):
 		key = event.widget['text']
 		if key == 'X': key = '*'
 		self.handle_input(key, 'btn')
-		self.helper.refresh_fixes()
+		self.helper.refresh_entries()
 
 	def mnu_clicked(self, cmd):
 		#menu entry clicked

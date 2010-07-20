@@ -122,3 +122,8 @@ class MainEntry(Entry):
 		self.error_semaphore -= 1
 		if self.error_semaphore is 0:
 			self.config(bg='white')
+
+	def update_len(self):
+	  text = self.get()
+	  ln = len(text) > 10 and len(text) or 10  #minimum length of 10
+	  self.config(width=ln)

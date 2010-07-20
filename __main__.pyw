@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 #
-#       Config.py
+#       __main__.py
 #       
 #       Copyright 2010 Ariel Haviv <ariel.haviv@gmail.com>
 #       
@@ -32,47 +32,20 @@
 #       OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 """
-***Configuration class***
+***Main runtime file***
 
 Calculator by Ariel Haviv (ariel.haviv@gmail.com)
 instructor: Peymer Anatoly
 """
 
 from Tkinter import *
-import string
+import Calculator
 
-class Config():
-	def __init__(self, root, base, prev_lbl = True):
-		'''setting default configuration'''
-		
-		self.root = root
-		self.prev_lbl = prev_lbl
-		self.action_keys = ['Bksp', 'Clr', '+/-', '+', '-', 'X', '/', '^', '%', '(', ')']
-		self.dot_key = ['.']
-		self.base_keys = list(string.digits + string.letters[26:])
-		self.legal_operators = ['-', '+', '/', '*', '^', '%', '(', ')']
-		
-		self.set_base(base)
-		
-	def set_base(self, base):
-		#setting new base
-		self.base = base
-		self.numpad_keys = self.base_keys[:base]
-		self.legal_input = self.base_keys[:base] + self.legal_operators
-		if base == 10:
-			self.numpad_keys += self.dot_key
-			self.legal_input += self.dot_key
-		self.numpad_keys += ['=']
-		self.root.set_title(base)
-		
-	def refresh_numpad(self, base):
-		self.set_base(base)
-		if base>16:
-			width=None #let it be auto-calulated width
-		else:
-			width=3
-		self.root.num_pad.refresh_buttons(self.numpad_keys, width=width)
+def main():
+	root = Tk()
+	calc = Calculator.init(root)
+	root.wait_window(calc)
+	return 0
 
-	def toggle_prev_lbl(self):
-		self.prev_lbl = not self.prev_lbl
-	
+if __name__ == '__main__':
+	main()
